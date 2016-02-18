@@ -1,0 +1,39 @@
+<?php
+/**
+* @file
+* Module file for Curricular Module Handling */
+/**
+* Implements of hook_init(). */
+function curricular_module_handling_init() {
+	drupal_set_message('Curricular modules are alive!');
+}
+/**
+* Implements hook_submit().
+*/
+function curricular_modules_node_form_submit($form_id, &$form_state) {
+
+		$title = $form_state['values']['title'];
+		db_insert('curricular_modules')
+		    ->fields(array(
+		      'title' => $title,
+		    ))
+		    ->execute();
+  // To make your code easier to read, save the data from $form_state into your own variables.
+ /* $name     = $form_state['values']['name'];  // I assume the name of the field is 'name'.
+  $position = $form_state['values']['position']; // I assume the name of the field is 'position'.
+  $salary   = $form_state['values']['salary']; // etc.
+  $age      = $form_state['values']['age'];
+
+  // Write the SQL query, using %s and %d as placeholders for the data that you're going to add. (See below.)
+  $sql_query = "INSERT INTO {employees} ('name','position','salary','age') VALUES ('%s', '%s', '%s', %d)";
+
+  // Save the data to the database, using $success to check for errors. (See below.)
+  if ($success = db_query($sql_query,$name,$position,$salary,$age)) {
+    // Tell the user that the employee has been saved.
+    drupal_set_message($name . t(' has been saved.'));
+  }
+  else { // If there's an error, $success will evaluate to FALSE, and the following code will execute.
+    drupal_set_message(t('There was an error saving your data. Please try again.'));
+  }
+*/
+}

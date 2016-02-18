@@ -1,0 +1,53 @@
+<?php
+/**
+* @file
+* Module file for Form example */
+/**
+* Implements hook_menu().
+*/
+function form_example_menu() {
+  $items = array();
+
+  $items['examples/form-example'] = array( //this creates a URL that will call this form at "examples/form-example"
+    'title' => 'Example Form', //page title
+    'description' => 'A form to mess around with.',
+    'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+    'page arguments' => array('form_example_form'), //put the name of the form here
+    'access callback' => TRUE
+  );
+
+  return $items;
+}
+/**
+* Implements hook_form().
+*/
+function form_example_form($form, &$form_state) {
+  
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Click Here!'),
+  );
+  
+  return $form;
+}
+/**
+* Implements hook_form_validate().
+*/
+function form_example_form_validate($form, &$form_state) {
+}
+/**
+* Implements hook_form_submit().
+*/
+function form_example_form_submit($form, &$form_state) {
+	//dpm(node_load(1));
+	$nid = 1; // The node to update
+
+	$node = node_load($nid); // ...where $nid is the node id
+
+	$node->title    = "Software Something, Eh?";
+	//$node->body[$node->language][0]['value']   = "And a new body text, too.";
+	$node->field_learning_objectives[$node->language][0]['value'] = "The new learning objctives are - yo hohohohoh";
+
+	node_save($node);
+	echo "Node with nid " . $node->nid . " updated!\n";
+}

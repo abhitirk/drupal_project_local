@@ -1,0 +1,3 @@
+name = Starting Drupal Dev
+description = for starting and testing Drupal module dev
+core = 7.x

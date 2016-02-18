@@ -1,0 +1,3 @@
+name = Curricular Module Handling
+description = Module for handling Curricular Module updates - such as pull verifications and writing to database, etc.
+core = 7.x
