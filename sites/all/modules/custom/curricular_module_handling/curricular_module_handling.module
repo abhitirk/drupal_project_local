@@ -7,6 +7,90 @@
 function curricular_module_handling_init() {
 	drupal_set_message('Curricular modules are alive!');
 }
+
+/**
+* Implements hook_menu()
+*/
+function curricular_module_handling_menu(){
+	
+	$items = array();
+	  $items['admin/curricular_module_versioning'] = array(
+	      'title' => 'Curricular Module Versioning',
+	      'description' => 'My Description',
+	      'position' => 'left',
+	      'weight' => -100,
+	      'page callback' => 'system_admin_menu_block_page',
+	      'access arguments' => array('administer site configuration'),
+	      'file' => 'system.admin.inc',
+	      'file path' => drupal_get_path('module', 'system'),
+	  );
+	  //We need at least one child item, otherwise parent will not show up
+	  $items['admin/curricular_module_versioning/child-name'] = array(
+	      'title' => 'Verify Update',
+	      'description' => 'My Description',
+	      'page callback' => 'curricular_module_handling_custom',
+	      'page arguments' => array('my-path'),
+	      'access arguments' => array('administer site configuration'),
+	  );
+	
+	$items['curricular_module_handling/custom'] = array(
+	    'title' => 'Custom page',
+	    'page callback' => 'curricular_module_handling_custom',
+	    'access arguments' => array('access content'),
+	  );
+ 
+	return $items;
+}
+
+/**
+* Custom callback function.
+*/
+function curricular_module_handling_custom() {
+	$str = "Nooo";
+	try {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/cmodules.xml')) {
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/cmodules.xml') or die("Error: Cannot create object");
+		  
+			//print_r($xml);
+			$str = "<h1>".$xml[0]['title']."</h1><br><br>";
+	
+			$i = 0;
+			foreach($xml->children() as $sub){
+		
+				$str .= "<h2>".$sub['title']."</h2><br>";
+		
+  				if($i == 0){
+  					$str .= "<table border='1'>";
+  					foreach ($sub->children() as $rows){
+  						$str .= "<tr>";
+  						$str .= "<td>".$rows['title'].'</td>';
+  						$str .= "<td>".$rows.'</td>';
+  						$str .= "</tr>";
+  					}
+  					$str .= "</table><br>";
+  					$i++;
+  				}
+  				else{
+  					$str .= "<ul>";
+  					foreach ($sub->children() as $rows){
+  						$str .= "<li>".$rows."</li>";
+  					}
+  					$str .= "</ul>";
+  				}
+  				$str .= "<br>";
+  			}
+		}
+		else {
+			$str = drupal_get_path('module', 'curricular_module_handling') . '/cmodules.xml';
+		}
+		
+	} 
+	catch (Exception $e) {
+	    $str = 'Caught exception: '.$e->getMessage()."\n";
+	}
+  return $str;
+}
+
 /**
 * Implements hook_submit().
 */
