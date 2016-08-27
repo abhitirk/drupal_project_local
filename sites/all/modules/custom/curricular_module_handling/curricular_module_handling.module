@@ -25,10 +25,11 @@ function curricular_module_handling_menu(){
 	      'file path' => drupal_get_path('module', 'system'),
 	  );
 	  //We need at least one child item, otherwise parent will not show up
-	  $items['admin/curricular_module_versioning/child-name'] = array(
+	  
+	  $items['admin/curricular_module_versioning/verify_module'] = array(
 	      'title' => 'Verify Update',
 	      'description' => 'My Description',
-	      'page callback' => 'curricular_module_handling_custom',
+	      'page callback' => 'verify_module_renderable_page',
 	      'page arguments' => array('my-path'),
 	      'access arguments' => array('administer site configuration'),
 	  );
@@ -43,54 +44,38 @@ function curricular_module_handling_menu(){
 }
 
 /**
-* Custom callback function.
+* Implements hook_theme()
 */
-function curricular_module_handling_custom() {
-	$str = "Nooo";
-	try {
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/cmodules.xml')) {
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/cmodules.xml') or die("Error: Cannot create object");
-		  
-			//print_r($xml);
-			$str = "<h1>".$xml[0]['title']."</h1><br><br>";
-	
-			$i = 0;
-			foreach($xml->children() as $sub){
-		
-				$str .= "<h2>".$sub['title']."</h2><br>";
-		
-  				if($i == 0){
-  					$str .= "<table border='1'>";
-  					foreach ($sub->children() as $rows){
-  						$str .= "<tr>";
-  						$str .= "<td>".$rows['title'].'</td>';
-  						$str .= "<td>".$rows.'</td>';
-  						$str .= "</tr>";
-  					}
-  					$str .= "</table><br>";
-  					$i++;
-  				}
-  				else{
-  					$str .= "<ul>";
-  					foreach ($sub->children() as $rows){
-  						$str .= "<li>".$rows."</li>";
-  					}
-  					$str .= "</ul>";
-  				}
-  				$str .= "<br>";
-  			}
-		}
-		else {
-			$str = drupal_get_path('module', 'curricular_module_handling') . '/cmodules.xml';
-		}
-		
-	} 
-	catch (Exception $e) {
-	    $str = 'Caught exception: '.$e->getMessage()."\n";
-	}
-  return $str;
+function curricular_module_handling_theme($existing, $type, $theme, $path) {
+  return array(
+    'curricular_module_handling_function' => array(
+      'variables' => array('forums' => NULL, 'topics' => NULL),
+    ),
+    'verify_module_template' => array(
+      'variables' => array('text_one' => NULL),
+	  'template' => 'verify_module_template',
+    ),
+  );
 }
-
+/**
+* Custom callback function - verify module template
+*/
+function verify_module_renderable_page(){
+	$text_one = 'Yeahyeahyeah';
+	$output = array(
+		'#theme' => 'verify_module_template',
+		'#type' => 'markup',
+		'#text_one' => $text_one,
+	);
+	return $output;
+}
+/**
+* Implement drupal_set_message().
+*/
+function curricular_module_handling_set_message($msg){
+	drupal_set_message($msg);
+	return;
+}
 /**
 * Implements hook_submit().
 */
