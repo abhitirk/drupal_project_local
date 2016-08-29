@@ -35,7 +35,7 @@
 			$str = "<h1>".$title."</h1><br><br>";
 		}
 		else {
-			$str = drupal_get_path('module', 'curricular_module_handling') . '/cmodules.xml';
+			$str = drupal_get_path('module', 'curricular_module_handling') . '/version_info.xml';
 		}	
 		
 		
@@ -43,7 +43,7 @@
 			
 			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/general_info.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
-			$str .= $sub_title;
+			$str .= "<h2>".$sub_title."</h2>";
 			
 			$str .= "<table border='1'>";
 			$str .= "<tr><td>Title</td><td>".$title."</td>";
@@ -59,6 +59,111 @@
 				$str .= "</tr>";
 			}
 			$str .= "</table><br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/learning_objectives.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/learning_objectives.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/topics.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/topics.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/preparation.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/preparation.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/discussion.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/discussion.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/practice.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/practice.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/reflection.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/reflection.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
+			
+		}
+		
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/other_resources.xml')) {
+			
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/other_resources.xml') or die("Error: Cannot create object");
+			$sub_title = $xml->subheading[0]['title'];
+			$str .= "<h2>".$sub_title."</h2>";
+			
+			$str .= "<ul>";
+			foreach ($xml->subheading[0]->children() as $rows){
+				$str .= "<li>".$rows."</li>";
+			}
+			$str .= "</ul>";
+			$str .= "<br>";
 			
 		}
 			

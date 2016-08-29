@@ -1,0 +1,10 @@
+<curricular_module module_id="1" title = "Software Design Overview">
+	<subheading title="Topics">
+		<row>Creative Thinking</row>
+		<row>Design</row>
+		<row>Architecture</row>
+		<row>UI Design</row>
+		<row>Software Design</row>
+		<row>Application Design</row>
+	</subheading>
+</curricular_module>
