@@ -1,5 +1,6 @@
 <?php
 
+    //echo $module_no; 
 	if(isset($_POST['yes'])){
 		dpm(node_load(1));
 		//curricular_module_handling_set_message('Yes clicked.');
@@ -24,9 +25,9 @@
 		curricular_module_handling_set_message('Disregard clicked.');	}
 /* The template file for verify module */
 	try {
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/version_info.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/version_info.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/version_info.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/version_info.xml') or die("Error: Cannot create object");
 			//$xml = new SimpleXMLElement($xml_file);
 			$title = $xml[0]['title'];
 			$version = $xml->subheading[0]->row[0];
@@ -39,9 +40,9 @@
 		}	
 		
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/general_info.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/general_info.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/general_info.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/general_info.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -62,9 +63,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/learning_objectives.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/learning_objectives.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/learning_objectives.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/learning_objectives.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -77,9 +78,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/topics.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/topics.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/topics.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/topics.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -92,9 +93,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/preparation.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/preparation.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/preparation.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/preparation.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -107,9 +108,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/discussion.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/discussion.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/discussion.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/discussion.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -122,9 +123,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/practice.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/practice.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/practice.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/practice.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -137,9 +138,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/reflection.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/reflection.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/reflection.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/reflection.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -152,9 +153,9 @@
 			
 		}
 		
-		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/other_resources.xml')) {
+		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/other_resources.xml')) {
 			
-			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/other_resources.xml') or die("Error: Cannot create object");
+			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/other_resources.xml') or die("Error: Cannot create object");
 			$sub_title = $xml->subheading[0]['title'];
 			$str .= "<h2>".$sub_title."</h2>";
 			
@@ -166,51 +167,6 @@
 			$str .= "<br>";
 			
 		}
-			
-			//$xml_version_info = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/version_info.xml') or die("Error: Cannot create object");
-	  
-			//print_r($xml);
-			/*$str = "<h1>".$xml_version_info[0]['title']."</h1><br><br>";
-			foreach($xml_version_info as $key0 => $value){
-				echo "..1..[$key0] => $value";
-				foreach($value->attributes() as $attributeskey0 => $attributesvalue1){
-					echo "________[$attributeskey0] = $attributesvalue1";
-					}
-				echo '<br />';
-			}*/
-			//$version = $xml_version_info[]
-			//$i = 0;
-			/*if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/xml/general_info.xml')) {
-				$xml_general_info = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/xml/general_info.xml') or die("Error: Cannot create object");
-				foreach($xml->children() as $sub){
-					$str .= "<h2>".$sub['title']."</h2><br>";
-				}
-			}*/
-			/*foreach($xml->children() as $sub){
-				if($sub['title']!='Version Info'){
-				$str .= "<h2>".$sub['title']."</h2><br>";
-	
-					if($i == 0){
-						$str .= "<table border='1'>";
-						foreach ($sub->children() as $rows){
-							$str .= "<tr>";
-							$str .= "<td>".$rows['title'].'</td>';
-							$str .= "<td>".$rows.'</td>';
-							$str .= "</tr>";
-						}
-						$str .= "</table><br>";
-						$i++;
-					}
-					else{
-						$str .= "<ul>";
-						foreach ($sub->children() as $rows){
-							$str .= "<li>".$rows."</li>";
-						}
-						$str .= "</ul>";
-					}
-					$str .= "<br>";
-				}
-			}*/
 	} 
 	catch (Exception $e) {
 	    $str = 'Caught exception: '.$e->getMessage()."\n";

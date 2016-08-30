@@ -1,0 +1,6 @@
+<curricular_module module_id="1" title = "Software Design Overview">
+	<subheading title="Learning Objectives">
+		<row>Understand how to estimate the total number of defects for a project using the Capture-Recapture method.</row>
+		<row>Know the importance of defect containment by understanding the play between defect injection and removal rates.</row>
+	</subheading>
+</curricular_module>

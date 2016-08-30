@@ -1,0 +1,15 @@
+<curricular_module module_id="2" title = "Software Design Overview">
+	<subheading title="General Information">
+		<row title="Submitted By">asingh64</row>
+		<row title="Author">Kevin 'Ary</row>
+		<row title="Mapping to Content Taxonomy"><![CDATA[<b>SEEK:</b> DES.con <b>CS2013:</b> SE/Software Design/Overview of Design Paradigms]]></row>
+		<row title="Abstract">This module introduces the innovation process and transition to concrete notions of design in engineering as a whole and software engineering in particular.</row>
+		<row title="Size">
+			<![CDATA[<b>Preparation:</b> 1 hour reading<br>
+			 <b>Preparation Quiz:</b> 30 minutes <br>
+			 <b>Discussion:</b> 50 minutes <br>
+			 <b>Practice:</b> 2 hours 30 minutes]]>
+		</row>
+		<row title="Comments"></row>
+	</subheading>
+</curricular_module>

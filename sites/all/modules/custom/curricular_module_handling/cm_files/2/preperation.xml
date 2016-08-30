@@ -1,0 +1,11 @@
+<curricular_module module_id="1" title = "Software Design Overview">
+	<subheading title="Preparation">
+		<row>READING: Introduction to Engineering Design (<![CDATA[<a href="http://www.ck12.org/section/The-Design-Process/">Link</a>]]>) (accessed June 7, 2012).
+</row>
+		<row><![CDATA[
+			QUIZ: IMS QTI 2.0 format (<a href="/sites/default/files/CST315/fall2012/quiz/quiz-cst315_ser394_fall_2012-designOverview.zip" target="_blank">ZIP</a>)<br>
+		Moodle XML format <a href="/sites/default/files/CST315/fall2012/quiz/quiz-cst315_ser394_fall_2012-designOverview.xml" target="_blank">XML</a><br>
+		XHTML Format <a href="/sites/default/files/CST315/fall2012/quiz/quiz-cst315_ser394_fall_2012-designOverview.html" target="_blank">HTML</a>
+		]]>)></row>
+	</subheading>
+</curricular_module>
