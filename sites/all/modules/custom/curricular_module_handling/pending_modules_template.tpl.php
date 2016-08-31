@@ -10,6 +10,18 @@
 		include "verify_module_template.tpl.php";
 	}
 	else{
+		if(isset($_POST['yes'])){
+			$module_no = $_POST['form_module_no'];
+			echo "yes clicked. : ".$module_no;
+			include "cm_make_update.php";
+			
+		}
+		else if(isset($_POST['later'])){
+			echo "later clicked. : ".$_POST['form_module_no'];
+		}
+		else if(isset($_POST['disregard'])){
+			echo "disregard clicked. : ".$_POST['form_module_no'];
+		}
 		echo '<ul class="admin-list">';
 		for($i = 1; $i < 10; $i++){
 			$directory = drupal_get_path('module', 'curricular_module_handling') . "/cm_files"."/".$i;

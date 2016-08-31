@@ -22,6 +22,7 @@
 	else if(isset($_POST['later'])){
 		curricular_module_handling_set_message('Later clicked.');	}
 	else if(isset($_POST['disregard'])){
+		echo "Disregard Clicked. ".$module_no;
 		curricular_module_handling_set_message('Disregard clicked.');	}
 /* The template file for verify module */
 	try {
@@ -175,6 +176,7 @@
 ?>
 <h2 align="center">Verify Update?</h2>
 	<form action="" method="post">
+		<input type="hidden" value="<?php echo $module_no;?>" name="form_module_no">
   		<button class="button" value="yes" name="yes" type="submit">Yes</button>
   <!-- <button class="button" value="later" name="later" onclick="window.location.href='../curricular_module_versioning/'" >Not Now</button> -->
   		<button class="button" value="later" name="later" type="submit">Not Now</button>
