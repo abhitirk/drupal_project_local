@@ -1,5 +1,5 @@
 <?php
-
+	//dpm(node_load(1));
 	if(isset($_POST['module_no'])){
 		//echo "hahahaha ".$_POST['module_no'];
 		/*$tpl_data = array(
