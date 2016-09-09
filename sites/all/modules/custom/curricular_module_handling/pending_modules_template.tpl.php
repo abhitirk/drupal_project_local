@@ -1,4 +1,7 @@
 <?php
+
+// Theme template file for the pending modules section of the CM Handling module.
+
 	//dpm(node_load(1));
 	if(isset($_POST['module_no'])){
 		//echo "hahahaha ".$_POST['module_no'];
@@ -14,13 +17,26 @@
 			$module_no = $_POST['form_module_no'];
 			echo "yes clicked. : ".$module_no;
 			include "cm_make_update.php";
-			
 		}
 		else if(isset($_POST['later'])){
 			echo "later clicked. : ".$_POST['form_module_no'];
 		}
 		else if(isset($_POST['disregard'])){
+			$module_no = $_POST['form_module_no'];
 			echo "disregard clicked. : ".$_POST['form_module_no'];
+			// Delete directory specific to the module_no
+			$dir = drupal_get_path('module', 'curricular_module_handling').DIRECTORY_SEPARATOR. "cm_files".DIRECTORY_SEPARATOR.$module_no;
+			$it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
+			$files = new RecursiveIteratorIterator($it,
+			             RecursiveIteratorIterator::CHILD_FIRST);
+			foreach($files as $file) {
+			    if ($file->isDir()){
+			        rmdir($file->getRealPath());
+			    } else {
+			        unlink($file->getRealPath());
+			    }
+			}
+			rmdir($dir);
 		}
 		echo '<ul class="admin-list">';
 		for($i = 1; $i < 10; $i++){
