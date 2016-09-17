@@ -1,36 +1,22 @@
 <?php
-
 // Template file to display the details of the specific pending module.
 
-    //echo $module_no; 
-	
-	// The following if else blocks are redundant and need to be removed.
-	if(isset($_POST['yes'])){
-		dpm(node_load(1));
-		//curricular_module_handling_set_message('Yes clicked.');
-		$node = node_load(1);
-		$l = $node->language;
-		$node->title = "Software Enterprise Something";
-		$node->field_guidelines_for_instructors[$l][0]['value'] = "Interesting guidelines";
-		$node->revision = TRUE; // Create new revision
-		$node->revision_moderation = TRUE; // make the new revision pending review
-		$node->log = "Update via verify update"; // Log message
-		node_save($node);
-		$noderevisions = node_revision_list($node); // or node_revision_list(node_load($nid));
-		print_r($noderevisions);
-		/*$node_wrapper = entity_metadata_wrapper('node', $node);
-		$node_wrapper->title->set("Something's yo right");
-		$node_wrapper->field_guidelines_for_instructors = "Something is right";
-		$node_wrapper->save();*/
-	}
-	else if(isset($_POST['later'])){
-		curricular_module_handling_set_message('Later clicked.');	}
-	else if(isset($_POST['disregard'])){
-		echo "Disregard Clicked. ".$module_no;
-		curricular_module_handling_set_message('Disregard clicked.');	}
+$module_directory = drupal_get_path('module', 'curricular_module_handling');
+include $module_directory."/parsedown/Parsedown.php";
+include $module_directory."/parsedown-extra/ParsedownExtra.php";
+echo $text_one;
+$parsedown = new ParsedownExtra();
 		
 // Main code for the template starts here.
 	try {
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/general_information.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/general_information.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str = $parsedown->text($file_contents);
+		}
+		
 		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/version_info.xml')) {
 			
 			$xml = simplexml_load_file(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/version_info.xml') or die("Error: Cannot create object");
@@ -41,10 +27,6 @@
 			$time = $xml->subheading[0]->row[2];
 			$str = "<h1>".$title."</h1><br><br>";
 		}
-		else {
-			$str = drupal_get_path('module', 'curricular_module_handling') . '/version_info.xml';
-		}	
-		
 		
 		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/general_info.xml')) {
 			
