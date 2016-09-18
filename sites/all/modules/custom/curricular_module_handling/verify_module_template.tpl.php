@@ -1,10 +1,6 @@
 <?php
 
-// Template file to display the details of the specific pending module.
-
     //echo $module_no; 
-	
-	// The following if else blocks are redundant and need to be removed.
 	if(isset($_POST['yes'])){
 		dpm(node_load(1));
 		//curricular_module_handling_set_message('Yes clicked.');
@@ -28,8 +24,7 @@
 	else if(isset($_POST['disregard'])){
 		echo "Disregard Clicked. ".$module_no;
 		curricular_module_handling_set_message('Disregard clicked.');	}
-		
-// Main code for the template starts here.
+/* The template file for verify module */
 	try {
 		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/version_info.xml')) {
 			

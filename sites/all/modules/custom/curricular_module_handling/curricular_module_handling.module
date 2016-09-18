@@ -36,9 +36,9 @@ function curricular_module_handling_menu(){
 	      'access arguments' => array('administer site configuration'),
 	  );
 	  
-	  $items['admin/curricular_module_versioning/switch_version'] = array(
-	      'title' => 'Switch Version',
-	      'description' => 'Change to another CM version',
+	  $items['admin/curricular_module_versioning/verify_module'] = array(
+	      'title' => 'Verify Update',
+	      'description' => 'My Description',
 	      'page callback' => 'verify_module_renderable_page',
 	      'page arguments' => array('my-path'),
 	      'access arguments' => array('administer site configuration'),

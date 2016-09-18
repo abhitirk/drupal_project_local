@@ -1,6 +1,4 @@
 <?php
-// This file peforms update on the respective CM node while reading from the xml's.
-	
 	
 	//dpm(node_load($module_no));
 	//curricular_module_handling_set_message('Yes clicked.');
