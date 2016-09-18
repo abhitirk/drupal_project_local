@@ -1,4 +1,0 @@
-### __Discussion:__
-
-  * Software Design Overview Part 1 [PPT](/sites/default/files/CST315/fall2012/notes/DesignOverview1.ppt)
-  * Software Design Overview Part 2 [PPT](/sites/default/files/CST315/fall2012/notes/DesignOverview2.ppt)

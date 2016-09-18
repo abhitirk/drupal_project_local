@@ -46,33 +46,15 @@ function curricular_module_handling_menu(){
 	  
 	  
 	
-	/*$items['curricular_module_handling/custom'] = array(
-	    'title' => 'Curricular Module',
-		'page callback' => 'curricular_module_render_page',
-		'page arguments' => array(2), // The matched wildcard.
-		'access callback' => TRUE,
-		'type' => MENU_CALLBACK,
-		);*/
-		$items['curricular_module_handling/%'] = array(
-				'page callback' => 'curricular_module_render_page',
-				'page arguments' => array(1),
-				'access callback' => TRUE,
-				);
-				
+	$items['curricular_module_handling/custom'] = array(
+	    'title' => 'Custom page',
+	    'page callback' => 'curricular_module_handling_custom',
+	    'access arguments' => array('access content'),
+	  );
+ 
 	return $items;
 }
 
-/*function curricular_module_handling_load($nodes) {
-	
-}*/
-
-function curricular_module_render_page($firstparameter = '') {
-	return theme('curricular_module_template', array('module_no' => $firstparameter));
-}
-
-function curricular_module_handling_custom() {
-  return '<p>Hello worldus</p>';
-}
 /**
 * Implements hook_theme()
 */
@@ -84,10 +66,6 @@ function curricular_module_handling_theme($existing, $type, $theme, $path) {
     'verify_module_template' => array(
       'variables' => array('text_one' => NULL),
 	  'template' => 'verify_module_template',
-    ),
-    'curricular_module_template' => array(
-      'variables' => array('module_no' => NULL),
-	  'template' => 'curricular_module_template',
     ),
     'pending_modules_template' => array(
       'variables' => array('text_one' => NULL),
@@ -104,15 +82,6 @@ function verify_module_renderable_page(){
 		'#theme' => 'verify_module_template',
 		'#type' => 'markup',
 		'#text_one' => $text_one,
-	);
-	return $output;
-}
-
-function curricular_module_renderable_page($module_id){
-	$output = array(
-		'#theme' => 'curricular_module_template',
-		'#type' => 'markup',
-		'#module_no' => $module_id,
 	);
 	return $output;
 }
