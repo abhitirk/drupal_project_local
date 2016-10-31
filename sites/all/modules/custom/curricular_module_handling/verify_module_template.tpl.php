@@ -1,30 +1,112 @@
 <?php
 
-    //echo $module_no; 
-	if(isset($_POST['yes'])){
-		dpm(node_load(1));
-		//curricular_module_handling_set_message('Yes clicked.');
-		$node = node_load(1);
-		$l = $node->language;
-		$node->title = "Software Enterprise Something";
-		$node->field_guidelines_for_instructors[$l][0]['value'] = "Interesting guidelines";
-		$node->revision = TRUE; // Create new revision
-		$node->revision_moderation = TRUE; // make the new revision pending review
-		$node->log = "Update via verify update"; // Log message
-		node_save($node);
-		$noderevisions = node_revision_list($node); // or node_revision_list(node_load($nid));
-		print_r($noderevisions);
-		/*$node_wrapper = entity_metadata_wrapper('node', $node);
-		$node_wrapper->title->set("Something's yo right");
-		$node_wrapper->field_guidelines_for_instructors = "Something is right";
-		$node_wrapper->save();*/
+// Template file to display the details of the specific pending module.
+
+$module_directory = drupal_get_path('module', 'curricular_module_handling');
+include $module_directory."/parsedown/Parsedown.php";
+include $module_directory."/parsedown-extra/ParsedownExtra.php";
+$parsedown = new ParsedownExtra();
+		
+// Main code for the template starts here.
+$str = '';
+	try {
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/title.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/title.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h1>".$parsedown->text($file_contents)."</h1>";
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/general_info.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/general_info.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>General Information</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/guidelines_for_instructors.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/guidelines_for_instructors.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Guidelines For Instructors</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/learning_objectives.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/learning_objectives.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Learning Objectives</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/topics.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/topics.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Topics</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/preparation.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/preparation.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Preparation</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/discussion.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/discussion.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Discussion</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/practice.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/practice.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Practice</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/projects.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/projects.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Projects</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/reflection.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/reflection.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Reflection</h2>";
+			$str .= $parsedown->text($file_contents);
+		}
+		
+		if (file_exists($module_directory.'/cm_files'.'/'.$module_no.'/other_resources.txt')) {
+			$file = $module_directory.'/cm_files'.'/'.$module_no.'/other_resources.txt';
+			$file_contents = file_get_contents($file);
+			
+			$str .= "<h2>Other Resources</h2>";
+			$str .= $parsedown->text($file_contents);
+		}			
+	} 
+	catch (Exception $e) {
+	    $str = 'Caught exception: '.$e->getMessage()."\n";
 	}
-	else if(isset($_POST['later'])){
-		curricular_module_handling_set_message('Later clicked.');	}
-	else if(isset($_POST['disregard'])){
-		echo "Disregard Clicked. ".$module_no;
-		curricular_module_handling_set_message('Disregard clicked.');	}
-/* The template file for verify module */
+	echo $str;
+		
+// Main code for the template starts here.
+
+/*
+
 	try {
 		if (file_exists(drupal_get_path('module', 'curricular_module_handling') . '/cm_files'.'/'.$module_no.'/version_info.xml')) {
 			
@@ -172,7 +254,7 @@
 	catch (Exception $e) {
 	    $str = 'Caught exception: '.$e->getMessage()."\n";
 	}
-	echo $str;
+	echo $str; */
 ?>
 <h2 align="center">Verify Update?</h2>
 	<form action="" method="post">

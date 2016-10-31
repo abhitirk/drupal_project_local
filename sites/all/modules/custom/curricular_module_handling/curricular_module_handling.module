@@ -36,10 +36,18 @@ function curricular_module_handling_menu(){
 	      'access arguments' => array('administer site configuration'),
 	  );
 	  
-	  $items['admin/curricular_module_versioning/verify_module'] = array(
-	      'title' => 'Verify Update',
-	      'description' => 'My Description',
+	  $items['admin/curricular_module_versioning/switch_version'] = array(
+	      'title' => 'Switch Version',
+	      'description' => 'Change to another CM version',
 	      'page callback' => 'verify_module_renderable_page',
+	      'page arguments' => array('my-path'),
+	      'access arguments' => array('administer site configuration'),
+	  );
+	  
+	  $items['admin/curricular_module_versioning/make_changes'] = array(
+	      'title' => 'Make Changes',
+	      'description' => 'Make changes to files on GitHub',
+	      'page callback' => 'make_changes_renderable_page',
 	      'page arguments' => array('my-path'),
 	      'access arguments' => array('administer site configuration'),
 	  );
@@ -53,6 +61,15 @@ function curricular_module_handling_menu(){
 	  );
  
 	return $items;
+}
+
+function curricular_module_handling_node_update($node){
+	dpm($node);
+	//rupal_set_message($node->title." is the one that has been updated! YO!");
+	     $loaded_node = node_load($node->nid);
+	     // Provides the old values, which shouldn't be there according
+	     // to the documentation above
+	     dpm($loaded_node);
 }
 
 /**
@@ -70,6 +87,10 @@ function curricular_module_handling_theme($existing, $type, $theme, $path) {
     'pending_modules_template' => array(
       'variables' => array('text_one' => NULL),
 	  'template' => 'pending_modules_template',
+    ),
+    'make_changes_template' => array(
+      'variables' => array('text_one' => NULL),
+	  'template' => 'make_changes_template',
     ),
   );
 }
@@ -90,6 +111,16 @@ function pending_modules_renderable_page(){
 	$text_one = 'Yeahyeahyeah';
 	$output = array(
 		'#theme' => 'pending_modules_template',
+		'#type' => 'markup',
+		'#text_one' => $text_one,
+	);
+	return $output;
+}
+
+function make_changes_renderable_page(){
+	$text_one = 'Yeahyeahyeah';
+	$output = array(
+		'#theme' => 'make_changes_template',
 		'#type' => 'markup',
 		'#text_one' => $text_one,
 	);
