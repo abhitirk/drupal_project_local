@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<curricular_module module_id="1" title = "Software Design Overview">
+	<subheading title="Version Info">
+		<row title="Version">1.0</row>
+		<row title="Date">09/30/2012</row>
+		<row title="Time">02:28PM</row>
+	</subheading>
+	<subheading title="General Information">
+		<row title="Title">Software Design Overview</row>
+		<row title="Version Info">Version 1.0, submitted by asingh64 on 09/30/2012 at 02:28 PM</row>
+		<row title="Author">Kevin Gary</row>
+		<row title="Mapping to Content Taxonomy"><![CDATA[<b>SEEK:</b> DES.con <b>CS2013:</b> SE/Software Design/Overview of Design Paradigms]]></row>
+		<row title="Abstract">This module introduces the innovation process and transition to concrete notions of design in engineering as a whole and software engineering in particular.</row>
+		<row title="Size">
+			<![CDATA[<b>Preparation:</b> 1 hour reading<br>
+			 <b>Preparation Quiz:</b> 30 minutes <br>
+			 <b>Discussion:</b> 50 minutes <br>
+			 <b>Practice:</b> 2 hours 30 minutes]]>
+		</row>
+		<row title="Comments"></row>
+	</subheading>
+	<subheading title="Learning Objectives">
+		<row>Understand how to estimate the total number of defects for a project using the Capture-Recapture method.</row>
+		<row>Know the importance of defect containment by understanding the play between defect injection and removal rates.</row>
+	</subheading>
+	<subheading title="Topics">
+		<row>Creative Thinking</row>
+		<row>Design</row>
+		<row>Architecture</row>
+		<row>UI Design</row>
+		<row>Software Design</row>
+		<row>Application Design</row>
+	</subheading>
+	<subheading title="Preparation">
+		<row>READING: Introduction to Engineering Design (<![CDATA[<a href="http://www.ck12.org/section/The-Design-Process/">Link</a>]]>) (accessed June 7, 2012).
+</row>
+		<row><![CDATA[
+			QUIZ: IMS QTI 2.0 format (<a href="/sites/default/files/CST315/fall2012/quiz/quiz-cst315_ser394_fall_2012-designOverview.zip" target="_blank">ZIP</a>)<br>
+		Moodle XML format <a href="/sites/default/files/CST315/fall2012/quiz/quiz-cst315_ser394_fall_2012-designOverview.xml" target="_blank">XML</a><br>
+		XHTML Format <a href="/sites/default/files/CST315/fall2012/quiz/quiz-cst315_ser394_fall_2012-designOverview.html" target="_blank">HTML</a>
+		]]>)></row>
+	</subheading>
+	<subheading title="Discussion">
+		<row>Software Design Overview Part 1 <![CDATA[<a href="/sites/default/files/CST315/fall2012/notes/DesignOverview1.ppt" target="_blank">PPT</a>]]></row>
+		<row>Software Design Overview Part 2 <![CDATA[<a href="/sites/default/files/CST315/fall2012/notes/DesignOverview2.ppt" target="_blank" style="line-height: 1.44; background-color: transparent;">PPT</a>]]></row>
+	</subheading>
+	<subheading title="Practice">
+		<row>Creative Design Activity <![CDATA[<a href="/sites/default/files/CST315/fall2012/labs/DesignActivityStartupLabs.083012.pdf" target="_blank">PDF</a>]]></row>
+	</subheading>
+	<subheading title="Reflection">
+		<row>Design Activity <![CDATA[<a href="/sites/default/files/CST315/fall2012/labs/DesignActivityReflection.doc" target="_blank">DOC</a>]]></row>
+	</subheading>
+	<subheading title="Other Resources">
+		<row><![CDATA[<a href="http://www.youtube.com/watch?v=M66ZU2PCIcM" target="_blank">YouTube IDEO Video</a>]]></row>
+	</subheading>
+</curricular_module>

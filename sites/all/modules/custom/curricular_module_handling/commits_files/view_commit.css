@@ -1,0 +1,70 @@
+.line-type-removed {background-color: #FFBDBD;}
+.line-type-added   {background-color: #BDFFD0;}
+.full-commit {
+    padding: 8px 8px 0;
+    margin: 10px 0;
+    font-size: 14px;
+    background: #e6f1f6;
+    border: 1px solid #c5d5dd;
+    border-radius: 3px;
+}
+.float-right {
+    float: right !important;
+}
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #eee;
+    background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+    background-image: linear-gradient(#fcfcfc, #eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.btn-outline {
+    color: #4078c0;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #e5e5e5;
+}
+.full-commit .btn-outline, .full-commit .btn-outline:disabled {
+    background-color: transparent;
+    border: 1px solid #cedee5;
+}
+.full-commit p.commit-title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #213f4d;
+}
+.full-commit .commit-meta {
+    padding: 8px;
+    margin-right: -8px;
+    margin-left: -8px;
+    background: #fff;
+    border-top: 1px solid #d8e6ec;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.commit-author-section {
+    color: #333;
+}
+.user-mention, .team-mention {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
