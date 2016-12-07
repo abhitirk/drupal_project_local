@@ -1,2 +1,2 @@
-  * Understand how to estimate the total number of defects for a project using the Capture-Recapture methods and stuff.
-  * Know the importance of defect containment by understanding the play between defect injection and removal rates.
+  * Software Design Overview Part 1 [PPT](/sites/default/files/CST315/fall2012/notes/DesignOverview1.ppt)
+  * Software Design Overview Part 2 [PPT](/sites/default/files/CST315/fall2012/notes/DesignOverview2.ppt)

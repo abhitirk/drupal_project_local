@@ -1,9 +1,7 @@
 <?php
 
-require_once 'vendor/autoload.php';
-require_once 'auth.php';
-
-$response = $api->get('repos/abhitirk/design_overview/contents/newfile_api2.txt');
+echo "delete!!!";
+/*$response = $api->get('repos/abhitirk/design_overview/contents/newfile_api2.txt');
 
 $my_file = $api->decode($response);
 
@@ -15,6 +13,6 @@ $parameters = [
 	'sha' => $sha,
 ];
 
-$response = $api->delete('/repos/abhitirk/design_overview/contents/newfile_api2.txt', $parameters);
+$response = $api->delete('/repos/abhitirk/design_overview/contents/newfile_api2.txt', $parameters);*/
 //$html = $api->decode($response);*/
 ?>

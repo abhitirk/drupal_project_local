@@ -7,6 +7,10 @@ $response = $api->get('repos/software-enterprise-asu/'.$repo.'/'.'commits/'.$sha
 	//var_dump($response->getContent());
 	$my_commit = $api->decode($response);
 	$files = $my_commit->files;
+	$author = $my_commit->author->login;
+	$datetime = rtrim($my_commit->commit->committer->date, ",");
+	$datetime = $datetime.'+00:00';
+	$time_elapsed = time_elapsed_string($datetime);
 	?>
 	<!--<link rel="stylesheet" type="text/css" href=">view_commit.css">-->
 	<style>
@@ -82,11 +86,11 @@ $response = $api->get('repos/software-enterprise-asu/'.$repo.'/'.'commits/'.$sha
 	}
 	</style>
 	<div class="full-commit ">
-	  <a href="#" class="btn btn-outline float-right" title="Browse the repository at this point in the history" rel="nofollow" onclick="submit_c_tree_cm('<?php echo $my_commit->sha;?>', <?php echo $repo;?> );return false;">View as CM</a>
+	  <a href="#" class="btn btn-outline float-right" title="A snapshot of the Curricular Module of this commit" rel="nofollow" onclick="submit_c_tree_cm('<?php echo $my_commit->sha;?>', '<?php echo $my_commit->commit->message;?>', <?php echo $repo;?> );return false;">View as CM</a>
 	  <a href="#" class="btn btn-outline float-right" title="Browse the repository at this point in the history" rel="nofollow" onclick="submit_c_tree('<?php echo $my_commit->sha;?>', <?php echo $repo;?> );return false;">Browse files</a>
 
 	    <p class="commit-title">
-	      <?echo $my_commit->commit->message;?>
+	      <?php echo $my_commit->commit->message;?>
 	    </p>
 
 
@@ -96,10 +100,10 @@ $response = $api->get('repos/software-enterprise-asu/'.$repo.'/'.'commits/'.$sha
 	    </span>
 
 	    <span class="commit-author-section">
-	      <a href="www.github.com/software-enterprise-asu" class="user-mention" rel="author">software-enterprise-asu</a>
+	      <a href="www.github.com/software-enterprise-asu" class="user-mention" rel="author"><?php echo $author;?></a>
   
 	      committed
-	      <relative-time datetime="2016-10-31T18:40:53Z" title="Oct 31, 2016, 11:40 AM MST">13 hours ago</relative-time>
+	      <relative-time datetime="2016-10-31T18:40:53Z" title="Oct 31, 2016, 11:40 AM MST"><?php echo $time_elapsed;?></relative-time>
 	  </span>
 	  </div>
 	</div>

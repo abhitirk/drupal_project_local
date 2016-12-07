@@ -5,7 +5,7 @@
 /**
 * Implements of hook_init(). */
 function curricular_module_handling_init() {
-	drupal_set_message('Curricular modules are alive!');
+	//drupal_set_message('Curricular modules are alive!');
 }
 
 /**
@@ -30,7 +30,7 @@ function curricular_module_handling_menu(){
 	  
 	  $items['admin/curricular_module_versioning/pending_modules'] = array(
 	      'title' => 'Pending Modules',
-	      'description' => 'List of modules to be verified',
+	      'description' => 'View pending modules to be updated on site',
 	      'page callback' => 'pending_modules_renderable_page',
 	      'page arguments' => array('my-path'),
 	      'access arguments' => array('administer site configuration'),
@@ -62,16 +62,15 @@ function curricular_module_handling_menu(){
  
 	return $items;
 }
-
-function curricular_module_handling_node_update($node){
-	dpm($node);
-	//rupal_set_message($node->title." is the one that has been updated! YO!");
-	     $loaded_node = node_load($node->nid);
-	     // Provides the old values, which shouldn't be there according
-	     // to the documentation above
-	     dpm($loaded_node);
+function curricular_module_handling_menu_breadcrumb_alter(&$active_trail, $item) {
+     
+    if (!drupal_is_front_page()) {
+       $end = end($active_trail);
+       if ($item ['href'] == $end ['href']) {
+         $active_trail [] = $end;
+       }
+     }
 }
-
 /**
 * Implements hook_theme()
 */
@@ -146,34 +145,4 @@ function make_changes_renderable_page(){
 function curricular_module_handling_set_message($msg){
 	drupal_set_message($msg);
 	return;
-}
-/**
-* Implements hook_submit().
-*/
-function curricular_modules_node_form_submit($form_id, &$form_state) {
-
-		$title = $form_state['values']['title'];
-		db_insert('curricular_modules')
-		    ->fields(array(
-		      'title' => $title,
-		    ))
-		    ->execute();
-  // To make your code easier to read, save the data from $form_state into your own variables.
- /* $name     = $form_state['values']['name'];  // I assume the name of the field is 'name'.
-  $position = $form_state['values']['position']; // I assume the name of the field is 'position'.
-  $salary   = $form_state['values']['salary']; // etc.
-  $age      = $form_state['values']['age'];
-
-  // Write the SQL query, using %s and %d as placeholders for the data that you're going to add. (See below.)
-  $sql_query = "INSERT INTO {employees} ('name','position','salary','age') VALUES ('%s', '%s', '%s', %d)";
-
-  // Save the data to the database, using $success to check for errors. (See below.)
-  if ($success = db_query($sql_query,$name,$position,$salary,$age)) {
-    // Tell the user that the employee has been saved.
-    drupal_set_message($name . t(' has been saved.'));
-  }
-  else { // If there's an error, $success will evaluate to FALSE, and the following code will execute.
-    drupal_set_message(t('There was an error saving your data. Please try again.'));
-  }
-*/
 }

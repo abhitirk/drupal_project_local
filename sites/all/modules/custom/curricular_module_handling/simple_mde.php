@@ -47,7 +47,7 @@ fclose($handle);
       <input type="button" name="submit_markdown" id="submit_markdown" value="Save" class="form-submit" onclick="submitFunction();"/>
     </form>
 <script>
-	var simplemde = new SimpleMDE();
+	var simplemde = new SimpleMDE({toolbar: ["preview", "|", "bold", "italic", "|", "heading", "heading-smaller", "heading-bigger", "|", "link", "table"],});
 	var con = document.getElementById('con').value;
 	simplemde.value(con);
 	
